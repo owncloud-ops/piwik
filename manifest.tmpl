@@ -1,0 +1,15 @@
+image: registry.owncloud.com/internal/piwik:{{#if build.tag}}{{trimPrefix "v" build.tag}}{{else}}latest{{/if}}
+{{#if build.tags}}
+tags:
+{{#each build.tags}}
+  {{#if this}}
+  - {{trimPrefix "v" this}}
+  - {{trimPrefix "v" this}}-amd64
+  {{/if}}
+{{/each}}
+{{/if}}
+manifests:
+  - image: registry.owncloud.com/internal/piwik:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}amd64
+    platform:
+      architecture: amd64
+      os: linux
