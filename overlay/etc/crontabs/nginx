@@ -1,0 +1,2 @@
+SHELL=/bin/sh
+@hourly cd /var/www/app && ./console core:archive --url=http://localhost:8080 >/dev/null 2>&1
